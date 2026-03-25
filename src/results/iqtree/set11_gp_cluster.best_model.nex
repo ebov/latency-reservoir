@@ -1,0 +1,6 @@
+#nexus
+begin sets;
+  charset gp = DNA,, 6039-6923 6923-8068;
+  charpartition mymodels =
+    HKY{57.5308}+F{0.300181,0.249631,0.231167,0.219022}: gp{0.0667159};
+end;

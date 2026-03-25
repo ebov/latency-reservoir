@@ -1,0 +1,98 @@
+IQ-TREE version 3.0.1 for MacOS ARM 64-bit built May  5 2025
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    GDX49HDJYH (SSE4.2, 16 GB RAM)
+Command: iqtree3 -s ../../data/raw/fasta/set8.fasta -te wa.tree -m HKY --tree-fix -redo
+Seed:    672393 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Tue Jul 15 17:11:40 2025
+Kernel:  SSE2 - 1 threads (8 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 8 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file ../../data/raw/fasta/set8.fasta ... Fasta format detected
+Reading fasta file: done in 0.00197101 secs using 78.34% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.007797 secs using 50.11% CPU
+WARNING: 1 sites contain only gaps or ambiguous characters.
+Alignment has 8 sequences with 18965 columns, 141 distinct patterns
+550 parsimony-informative, 481 singleton sites, 17934 constant sites
+                                                 Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.000197887 secs using 4.548% CPU
+   1  KC242791|Bonduni|DRC|1977-06                       0.03%    passed     99.02%
+   2  KR063671|Yambuku-Mayinga|DRC|1976-10-01            0.04%    passed     98.84%
+   3  KC242792|Gabon|Gabon|1994-12-27                    0.03%    passed     99.99%
+   4  KC242793|1Eko|Gabon|1996-02                        0.04%    passed    100.00%
+   5  KC242798|1Ikot|Gabon|1996-10-27                    0.03%    passed     99.69%
+   6  KC242800|Ilembe|Gabon|2002-02-23                   0.04%    passed     99.99%
+   7  KF113529|Kelle_2|COG|2003-10                       1.63%    passed     96.56%
+   8  KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20    0.03%    passed     99.93%
+****  TOTAL                                              0.23%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+Checking for duplicate sequences: done in 1.78814e-05 secs using 67.11% CPU
+Reading input tree file wa.tree ... rooted tree
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -33248.685
+2. Current log-likelihood: -32832.574
+3. Current log-likelihood: -32830.394
+4. Current log-likelihood: -32828.243
+5. Current log-likelihood: -32826.035
+6. Current log-likelihood: -32823.770
+7. Current log-likelihood: -32821.442
+8. Current log-likelihood: -32819.049
+9. Current log-likelihood: -32816.588
+10. Current log-likelihood: -32814.054
+11. Current log-likelihood: -32811.442
+12. Current log-likelihood: -32808.749
+13. Current log-likelihood: -32805.969
+14. Current log-likelihood: -32803.096
+15. Current log-likelihood: -32800.125
+16. Current log-likelihood: -32797.047
+17. Current log-likelihood: -32793.857
+18. Current log-likelihood: -32790.545
+19. Current log-likelihood: -32787.102
+20. Current log-likelihood: -32783.518
+21. Current log-likelihood: -32779.781
+22. Current log-likelihood: -32775.878
+23. Current log-likelihood: -32771.794
+24. Current log-likelihood: -32767.514
+25. Current log-likelihood: -32763.018
+26. Current log-likelihood: -32758.284
+27. Current log-likelihood: -32753.288
+28. Current log-likelihood: -32748.002
+29. Current log-likelihood: -32742.394
+30. Current log-likelihood: -32736.425
+31. Current log-likelihood: -32730.053
+32. Current log-likelihood: -32723.228
+33. Current log-likelihood: -32715.894
+34. Current log-likelihood: -32707.988
+35. Current log-likelihood: -32699.446
+36. Current log-likelihood: -32690.206
+37. Current log-likelihood: -32680.233
+38. Current log-likelihood: -32669.566
+39. Current log-likelihood: -32658.419
+40. Current log-likelihood: -32629.995
+41. Current log-likelihood: -32629.984
+Optimal log-likelihood: -32629.984
+Rate parameters:  A-C: 1.00000  A-G: 11.32143  A-T: 1.00000  C-G: 1.00000  C-T: 11.32143  G-T: 1.00000
+Base frequencies:  A: 0.319  C: 0.214  G: 0.198  T: 0.269
+Parameters optimization took 41 rounds (0.011 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -32629.984
+Total tree length: 0.057
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.014 sec (0h:0m:0s)
+Total wall-clock time used: 0.021 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                ../../data/raw/fasta/set8.fasta.iqtree
+  Maximum-likelihood tree:       ../../data/raw/fasta/set8.fasta.treefile
+  Screen log file:               ../../data/raw/fasta/set8.fasta.log
+
+Date and Time: Tue Jul 15 17:11:40 2025

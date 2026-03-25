@@ -1,0 +1,194 @@
+{
+  "analyses": [
+    
+    {
+      "key": "set8_best",
+      "fasta": "./data/raw/fasta/set8.fasta",
+      "partition": "./data/raw/partitions/best.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+
+        }
+      ]
+    },
+  {
+    "key": "set11_best",
+    "fasta": "./data/raw/fasta/set11.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "paml": [
+      {
+        "key": "dr",
+        "cltr": "./data/processed/paml/cltr/dr.cltr"
+      },
+      {
+        "key": "srdtLocal",
+        "cltr": "./data/processed/paml/cltr/srdt-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set11.tips.txt",
+         "clades":"./data/processed/paml/local-clocks/set11.txt"}
+      },
+      {
+        "key": "srLocal",
+        "cltr": "./data/processed/paml/cltr/sr-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set11.tips.txt", "clades":"./data/processed/paml/local-clocks/set11.txt"}
+      },
+      {
+        "key": "srdt",
+        "cltr": "./data/processed/paml/cltr/srdt.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+      },
+      {
+        "key": "sr",
+        "cltr": "./data/processed/paml/cltr/sr.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+
+      }
+    ]
+  },
+  {
+    "key": "set19_best",
+    "fasta": "./data/raw/fasta/set19.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "paml": [
+      {
+        "key": "dr",
+        "cltr": "./data/processed/paml/cltr/dr.cltr"
+      },
+      {
+        "key": "srdt",
+        "cltr": "./data/processed/paml/cltr/srdt.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA,1970s}.txt"
+      },
+      {
+        "key": "sr",
+        "cltr": "./data/processed/paml/cltr/sr.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA,1970s}.txt"
+      },
+      {
+        "key": "srdtStem",
+        "cltr": "./data/processed/paml/cltr/srdt-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA,1970s}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set19.tips.txt", "clades":"./data/processed/paml/local-clocks/set19.txt"}
+      },
+      {
+        "key": "srStem",
+        "cltr": "./data/processed/paml/cltr/sr-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA,1970s}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set19.tips.txt", "clades":"./data/processed/paml/local-clocks/set19.txt"}
+      }
+    ]
+  },
+  {
+    "key": "sc.latency",
+    "fasta": "./data/raw/fasta/set19.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+   "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  },
+    {
+    "key": "sc.latency.noMakona",
+    "fasta": "./data/raw/fasta/set19.noMakona.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  },
+  {
+    "key": "sc.latency.bd",
+    "fasta": "./data/raw/fasta/set19.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+   "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/geo/bd/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  },
+    {
+    "key": "sc.latency.noMakona.bd",
+    "fasta": "./data/raw/fasta/set19.noMakona.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/geo/bd/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  },
+  {
+    "key": "sc.latency.constrained",
+    "fasta": "./data/raw/fasta/set19.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+   "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/constrained.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  },
+  {
+    "key": "sc.latency.noMakona.18",
+    "fasta": "./data/raw/fasta/set18.noMakona.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  },
+  {
+    "key": "sc.latency.18",
+    "fasta": "./data/raw/fasta/set18.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":500000000,
+      "logEvery":10000,
+      "template":"./data/processed/xmlTemplates/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":25000000,
+      "resample":100000
+    }
+  }
+  ],
+  "save_every":50000000
+}

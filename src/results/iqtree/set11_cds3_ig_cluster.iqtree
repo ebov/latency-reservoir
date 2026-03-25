@@ -1,0 +1,106 @@
+IQ-TREE 3.0.1 built May  5 2025
+
+Partition file name: cds3_ig.nex
+Input file name: tidy.fasta
+Type of analysis: tree reconstruction
+Random seed number: 332936
+
+REFERENCES
+----------
+
+To cite IQ-TREE 3 please use:
+
+Thomas K.F. Wong, Nhan Ly-Trong, Huaiyan Ren, Hector Banos, Andrew J. Roger,
+Edward Susko, Chris Bielow, Nicola De Maio, Nick Goldman, Matthew W. Hahn,
+Gavin Huttley, Robert Lanfear, Bui Quang Minh (2025)
+IQ-TREE 3: Phylogenomic Inference Software using Complex Evolutionary Models.
+Submitted.
+
+Please also cite the following paper(s) for the feature(s) that you used:
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst. Biol., 65:997-1008.
+https://doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 6 taxa with 1 partitions and 8073 total sites (0% missing data)
+
+  ID	Type	Seq	Site	Unique	Infor	Invar	Const	Name
+   1	DNA	6	8073	110	163	7197	7197	cds3_iq
+
+Column meanings:
+  Unique: Number of unique site patterns
+  Infor:  Number of parsimony-informative sites
+  Invar:  Number of invariant sites
+  Const:  Number of constant sites (can be subset of invariant sites)
+
+SUBSTITUTION PROCESS
+--------------------
+
+Edge-linked-proportional partition model with separate substitution models and separate rates across sites
+
+  ID  Model           Speed  Parameters
+   1  HKY+F          1.0000  HKY{12.5416}+F{0.321235,0.196148,0.177175,0.305442}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -16019.2726 (s.e. 143.0840)
+Unconstrained log-likelihood (without tree): -15895.3965
+Number of free parameters (#branches + #model parameters): 13
+Akaike information criterion (AIC) score: 32064.5451
+Corrected Akaike information criterion (AICc) score: 32064.5903
+Bayesian information criterion (BIC) score: 32155.4968
+
+Mixture-based log-likelihood of the tree: -16019.2726
+Marginal Akaike information criterion (mAIC) score: 32064.5451
+
+Total tree length (sum of branch lengths): 0.1163
+Sum of internal branch lengths: 0.0179 (15.3513% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'KR063671|Yambuku-Mayinga|DRC|1976-10-01' is drawn at root
+
+               +-------------------HQ613403|M-M|DRC|2007-08-31
+            +--|
+            |  +---------------------------------------------KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20
++-----------|
+|           +---------------------------KC242800|Ilembe|Gabon|2002-02-23
+|
++--------KR063671|Yambuku-Mayinga|DRC|1976-10-01
+|
+|        +------------KC242792|Gabon|Gabon|1994-12-27
++--------|
+         +-------KU182905|Kikwit-9510621|DRC|1995-05-04
+
+Tree in newick format:
+
+(((HQ613403|M-M|DRC|2007-08-31:0.0161905238,KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20:0.0358076995):0.0007654204,KC242800|Ilembe|Gabon|2002-02-23:0.0219259673):0.0100557438,KR063671|Yambuku-Mayinga|DRC|1976-10-01:0.0074222410,(KC242792|Gabon|Gabon|1994-12-27:0.0105621175,KU182905|Kikwit-9510621|DRC|1995-05-04:0.0065302973):0.0070309579);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t set11_cds3_ig_cluster.treefile -p set11_cds3_ig_cluster.best_model.nex
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s tidy.fasta --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s tidy.fasta --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Tue Feb  3 22:59:29 2026
+Total CPU time used: 2.17011 seconds (0h:0m:2s)
+Total wall-clock time used: 2.79713 seconds (0h:0m:2s)
+

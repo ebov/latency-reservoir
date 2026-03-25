@@ -1,0 +1,53 @@
+{
+  "type": "module",
+  "private": true,
+  "name": "latency-reservoir",
+  "version": "0.2.0",
+  "scripts": {
+    "clean": "rimraf src/.observablehq/cache",
+    "clean-data": "rimraf src/.observablehq/cache/data",
+    "build": "rimraf dist && observable build",
+    "dev": "observable preview",
+    "deploy": "observable deploy",
+    "observable": "observable"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.948.0",
+    "@changesets/cli": "^2.29.8",
+    "@figtreejs/browser": "^0.0.1-beta.1",
+    "@observablehq/framework": "v1.13.2",
+    "@observablehq/inputs": "^0.12.0",
+    "@observablehq/plot": "^0.6.17",
+    "@stdlib/stats-base-dists-binomial": "^0.2.2",
+    "@stdlib/stats-base-dists-chisquare": "^0.2.2",
+    "@stdlib/stats-base-dists-gamma": "^0.2.2",
+    "@stdlib/stats-base-dists-poisson": "^0.2.2",
+    "@stdlib/stats-kde2d": "^0.2.1",
+    "d3-dsv": "^3.0.1",
+    "d3-fetch": "^3.0.1",
+    "d3-format": "^3.1.0",
+    "d3-require": "^1.3.0",
+    "d3-scale": "^4.0.2",
+    "d3-time-format": "^4.1.0",
+    "fmin": "^0.0.4",
+    "htl": "^0.3.1",
+    "jsdom": "^26.1.0",
+    "ml-regression": "^5.0.0",
+    "pdfmake": "^0.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.1",
+    "topojson-client": "^3.1.0",
+    "typedfastbitset": "^0.6.1",
+    "web-streams-polyfill": "^4.1.0",
+    "xml-js": "^1.6.11",
+    "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.0",
+    "rimraf": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

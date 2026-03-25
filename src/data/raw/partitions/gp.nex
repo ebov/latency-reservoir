@@ -1,0 +1,5 @@
+#NEXUS
+begin sets;
+	charset gp = 6039-6923 6923-8068;
+end;
+

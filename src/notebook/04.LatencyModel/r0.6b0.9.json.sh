@@ -1,0 +1,1 @@
+java -cp src/notebook/04.LatencyModel/beast.jar dr.app.tools.MarkovRewardDensityCalculator -rate 0.6 -bias 0.9 -length 10

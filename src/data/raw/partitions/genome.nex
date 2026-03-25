@@ -1,0 +1,28 @@
+#NEXUS
+begin sets;
+	charset NP_1 = 470-2689\3;
+	charset VP35_1 = 3129-4151\3;
+	charset VP40_1 = 4479-5459\3;
+	charset GP_1 = 6039-6923\3 6923-8068\3;
+	charset VP30_1 = 8509-9375\3;
+	charset VP24_1 = 10345-11100\3;
+	charset L_1 = 11581-18219\3;
+
+	charset NP_2 = 471-2689\3;
+	charset VP35_2 = 3130-4151\3;
+	charset VP40_2 = 4480-5459\3;
+	charset GP_2 = 6040-6923\3 6924-8068\3;
+	charset VP30_2 = 8510-9375\33;
+	charset VP24_2 = 10346-11100\3;
+	charset L_2 = 11582-18219\3;
+
+	charset NP_3 = 472-2689\3;
+	charset VP35_3 = 3131-4151\3;
+	charset VP40_3 = 4481-5459\3;
+	charset GP_3 = 6041-6923\3 6925-8068\3;
+	charset VP30_3 = 8511-9375\3;
+	charset VP24_3 = 10347-11100\3;
+	charset L_3 = 11583-18219\3;
+
+	charset iq = 2690-3128 4152-4478 5460-6038 8069-8508 9376-10344 11101-11580;
+end;

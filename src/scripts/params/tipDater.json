@@ -1,0 +1,224 @@
+{
+  "analyses": [
+    {
+      "key": "set11_gp",
+      "fasta": "./data/raw/fasta/set11.fasta",
+      "partition": "./data/raw/partitions/gp.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+        }
+      ]
+    },
+    {
+      "key": "set11_cds3_ig",
+      "fasta": "./data/raw/fasta/set11.fasta",
+      "partition": "./data/raw/partitions/cds3_ig.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+
+        }
+      ]
+    },
+    {
+      "key": "set11_gp_cluster",
+      "fasta": "./data/raw/fasta/set11_cluster.fasta",
+      "partition": "./data/raw/partitions/gp.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        }
+      ]
+    },
+    {
+      "key": "set11_cds3_ig_cluster",
+      "fasta": "./data/raw/fasta/set11_cluster.fasta",
+      "partition": "./data/raw/partitions/cds3_ig.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+
+        }
+      ]
+    },
+    {
+      "key": "set11_best_cluster",
+      "fasta": "./data/raw/fasta/set11_cluster.fasta",
+      "partition": "./data/raw/partitions/best.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+
+        }
+      ]
+    },
+    {
+      "key": "set8_gp",
+      "fasta": "./data/raw/fasta/set8.fasta",
+      "partition": "./data/raw/partitions/gp.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+        }
+      ]
+    },
+    {
+      "key": "set8_cds3_ig",
+      "fasta": "./data/raw/fasta/set8.fasta",
+      "partition": "./data/raw/partitions/cds3_ig.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+
+        }
+      ]
+    },
+
+    {
+      "key": "set8_gp_cluster",
+      "fasta": "./data/raw/fasta/set8_cluster.fasta",
+      "partition": "./data/raw/partitions/gp.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        }
+      ]
+    },
+    {
+      "key": "set8_cds3_ig_cluster",
+      "fasta": "./data/raw/fasta/set8_cluster.fasta",
+      "partition": "./data/raw/partitions/cds3_ig.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.1.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.1.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+
+        }
+      ]
+    },
+    {
+      "key": "set8_best_cluster",
+      "fasta": "./data/raw/fasta/set8_cluster.fasta",
+      "partition": "./data/raw/partitions/best.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        },
+        {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel-cluster,1970s-cluster,WA}.txt"
+        }
+      ]
+    }
+  ]
+}

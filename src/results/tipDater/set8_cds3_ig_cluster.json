@@ -1,0 +1,87 @@
+[
+  {
+    "dataset": "set8_cds3_ig_cluster",
+    "analysis": "dr",
+    "trees": [
+      {
+        "id": 1,
+        "ll": -14808.689119,
+        "ntime": 5,
+        "np": 6,
+        "tree": "(KR063671|Yambuku-Mayinga|DRC|1976-10-01: 0.007496, KC242792|Gabon|Gabon|1994-12-27: 0.017561, (KC242800|Ilembe|Gabon|2002-02-23: 0.021851, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 0.036489): 0.009929);"
+      }
+    ],
+    "sites": 8073,
+    "seqs": 4,
+    "partitions": []
+  },
+  {
+    "dataset": "set8_cds3_ig_cluster",
+    "analysis": "sr",
+    "trees": [
+      {
+        "id": 1,
+        "ll": -14824.178848,
+        "ntime": 3,
+        "np": 4,
+        "tree": "(((KR063671|Yambuku-Mayinga|DRC|1976-10-01: 0.012445, KC242792|Gabon|Gabon|1994-12-27: 0.012445): 0.009755, KC242800|Ilembe|Gabon|2002-02-23: 0.022200): 0.007135, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 0.029335);"
+      },
+      {
+        "id": 2,
+        "ll": -14842.791922,
+        "ntime": 3,
+        "np": 4,
+        "tree": "((KR063671|Yambuku-Mayinga|DRC|1976-10-01: 0.013815, KC242792|Gabon|Gabon|1994-12-27: 0.013815): 0.012597, (KC242800|Ilembe|Gabon|2002-02-23: 0.026412, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 0.026412): 0.000000);"
+      },
+      {
+        "id": 3,
+        "ll": -14935.207901,
+        "ntime": 3,
+        "np": 4,
+        "tree": "((KC242792|Gabon|Gabon|1994-12-27: 0.024532, (KC242800|Ilembe|Gabon|2002-02-23: 0.019879, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 0.019879): 0.004653): 0.000000, KR063671|Yambuku-Mayinga|DRC|1976-10-01: 0.024532);"
+      }
+    ],
+    "sites": 8073,
+    "seqs": 4,
+    "partitions": []
+  },
+  {
+    "dataset": "set8_cds3_ig_cluster",
+    "analysis": "srdt",
+    "trees": [
+      {
+        "id": 1,
+        "ll": -14813.790984,
+        "ntime": 4,
+        "np": 5,
+        "tree": "(((KR063671|Yambuku-Mayinga|DRC|1976-10-01: 8009.040874, KC242792|Gabon|Gabon|1994-12-27: 14670.040874): 8452.844288, KC242800|Ilembe|Gabon|2002-02-23: 25737.885162): 3216.695086, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 33362.580247);",
+        "rate": [
+          0.036512
+        ]
+      },
+      {
+        "id": 2,
+        "ll": -14812.096407,
+        "ntime": 4,
+        "np": 5,
+        "tree": "((KR063671|Yambuku-Mayinga|DRC|1976-10-01: 3849.167859, KC242792|Gabon|Gabon|1994-12-27: 10510.167859): 3025.824789, (KC242800|Ilembe|Gabon|2002-02-23: 13688.770140, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 18096.770140): 2462.222509);",
+        "rate": [
+          0.065926
+        ]
+      },
+      {
+        "id": 3,
+        "ll": -14809.949963,
+        "ntime": 4,
+        "np": 5,
+        "tree": "((KC242792|Gabon|Gabon|1994-12-27: 4761.986010, (KC242800|Ilembe|Gabon|2002-02-23: 5033.555563, KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20: 9441.555563): 2343.430447): 1899.013990, KR063671|Yambuku-Mayinga|DRC|1976-10-01: 0.000000);",
+        "rate": [
+          0.145125
+        ]
+      }
+    ],
+    "sites": 8073,
+    "seqs": 4,
+    "partitions": []
+  }
+]

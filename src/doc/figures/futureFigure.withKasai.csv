@@ -1,0 +1,20 @@
+median,35
+expP,0.4
+expT,14
+kasai,72.0
+kasaiExpP,0.4
+kasaiExpT,21
+kasaiExpT_min,6
+kasaiExpT_max,48
+kasaiExpRate,1.34$ \times 10^{-4}$
+kasaiExpRate_min,2.64$ \times 10^{-5}$
+kasaiExpRate_max,2.28$ \times 10^{-4}$
+kasaiExpMuts,116
+kasaiExpMuts_max,198
+kasaiExpMuts_min,23
+makona_mean,85
+makona_max,127
+makona_min,57
+makona_PL_mean,4.96\%
+makona_PL_min,0.62\%
+makona_PL_max,19.22\%

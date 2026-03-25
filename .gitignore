@@ -1,0 +1,9 @@
+hydrateLogs.sh
+update.sh
+node_modules
+src/results/remote
+src/doc/draft.pdf
+src/doc/draft.bbl
+src/doc/draft.run.xml
+.observablehq/
+.nextflow.log*

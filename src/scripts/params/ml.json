@@ -1,0 +1,108 @@
+{
+  "analyses": [
+
+    {
+      "key": "set8_best",
+      "fasta": "./data/raw/fasta/set8.fasta",
+      "partition": "./data/raw/partitions/best.nex",
+      "paml": [
+        {
+          "key": "dr",
+          "cltr": "./data/processed/paml/cltr/dr.cltr"
+        },
+        {
+          "key": "srdt",
+          "cltr": "./data/processed/paml/cltr/srdt.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+        },
+         {
+          "key": "sr",
+          "cltr": "./data/processed/paml/cltr/sr.cltr",
+          "outGroups": "./data/processed/paml/outgroups/set8-partitions/{novel,WA,1970s}.txt"
+
+        }
+      ]
+    },
+     {
+    "key": "set11_best",
+    "fasta": "./data/raw/fasta/set11.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "paml": [
+      {
+        "key": "dr",
+        "cltr": "./data/processed/paml/cltr/dr.cltr"
+      },
+      {
+        "key": "srdtLocal",
+        "cltr": "./data/processed/paml/cltr/srdt-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set11.tips.txt",
+         "clades":"./data/processed/paml/local-clocks/set11.txt"}
+      },
+      {
+        "key": "srLocal",
+        "cltr": "./data/processed/paml/cltr/sr-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set11.tips.txt", "clades":"./data/processed/paml/local-clocks/set11.txt"}
+      },
+      {
+        "key": "srdt",
+        "cltr": "./data/processed/paml/cltr/srdt.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+      },
+      {
+        "key": "sr",
+        "cltr": "./data/processed/paml/cltr/sr.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set11-partitions/{novel,WA,1970s}.txt"
+
+      }
+    ]
+  },
+  {
+    "key": "set19_best",
+    "fasta": "./data/raw/fasta/set19.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "paml": [
+      {
+        "key": "dr",
+        "cltr": "./data/processed/paml/cltr/dr.cltr"
+      },
+      {
+        "key": "srdt",
+        "cltr": "./data/processed/paml/cltr/srdt.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA,1970s}.txt"
+      },
+      {
+        "key": "sr",
+        "cltr": "./data/processed/paml/cltr/sr.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA,1970s}.txt"
+      },
+      {
+        "key": "srdtStem",
+        "cltr": "./data/processed/paml/cltr/srdt-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set19.tips.txt", "clades":"./data/processed/paml/local-clocks/set19.txt"}
+      },
+      {
+        "key": "srStem",
+        "cltr": "./data/processed/paml/cltr/sr-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/{novel,WA}.txt",
+        "localClock":{"tips": "./data/processed/paml/local-clocks/set19.tips.txt", "clades":"./data/processed/paml/local-clocks/set19.txt"}
+      },
+            {
+        "key": "srdtStem11",
+        "cltr": "./data/processed/paml/cltr/srdt-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/1970s.txt",
+        "localClock":{ "tips": "./data/processed/paml/local-clocks/set19.11.tips.txt","clades":"./data/processed/paml/local-clocks/set19.11.txt"}
+      },
+            {
+        "key": "srStem11",
+        "cltr": "./data/processed/paml/cltr/sr-local.cltr",
+        "outGroups": "./data/processed/paml/outgroups/set19-partitions/1970s.txt",
+        "localClock":{ "tips": "./data/processed/paml/local-clocks/set19.11.tips.txt","clades":"./data/processed/paml/local-clocks/set19.11.txt"}
+      }
+    ]
+  }
+  ]
+   
+}

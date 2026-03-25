@@ -1,0 +1,116 @@
+IQ-TREE 3.0.1 built May  5 2025
+
+Partition file name: cds3_ig.nex
+Input file name: tidy.fasta
+Type of analysis: tree reconstruction
+Random seed number: 124142
+
+REFERENCES
+----------
+
+To cite IQ-TREE 3 please use:
+
+Thomas K.F. Wong, Nhan Ly-Trong, Huaiyan Ren, Hector Banos, Andrew J. Roger,
+Edward Susko, Chris Bielow, Nicola De Maio, Nick Goldman, Matthew W. Hahn,
+Gavin Huttley, Robert Lanfear, Bui Quang Minh (2025)
+IQ-TREE 3: Phylogenomic Inference Software using Complex Evolutionary Models.
+Submitted.
+
+Please also cite the following paper(s) for the feature(s) that you used:
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst. Biol., 65:997-1008.
+https://doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 11 taxa with 1 partitions and 8073 total sites (0% missing data)
+
+  ID	Type	Seq	Site	Unique	Infor	Invar	Const	Name
+   1	DNA	11	8073	158	555	7139	7139	cds3_iq
+
+Column meanings:
+  Unique: Number of unique site patterns
+  Infor:  Number of parsimony-informative sites
+  Invar:  Number of invariant sites
+  Const:  Number of constant sites (can be subset of invariant sites)
+
+SUBSTITUTION PROCESS
+--------------------
+
+Edge-linked-proportional partition model with separate substitution models and separate rates across sites
+
+  ID  Model           Speed  Parameters
+   1  HKY+F          1.0000  HKY{12.4847}+F{0.321003,0.196232,0.17746,0.305305}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -16676.0381 (s.e. 159.2942)
+Unconstrained log-likelihood (without tree): -16449.4345
+Number of free parameters (#branches + #model parameters): 23
+Akaike information criterion (AIC) score: 33398.0762
+Corrected Akaike information criterion (AICc) score: 33398.2134
+Bayesian information criterion (BIC) score: 33558.9906
+
+Mixture-based log-likelihood of the tree: -16676.0381
+Marginal Akaike information criterion (mAIC) score: 33398.0762
+
+Total tree length (sum of branch lengths): 0.1252
+Sum of internal branch lengths: 0.0709 (56.6204% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'KR063671|Yambuku-Mayinga|DRC|1976-10-01' is drawn at root
+
++**KC242791|Bonduni|DRC|1977-06-15
+|
+|                                       +--HQ613402|034-KS|DRC|2008-12-31
+|                     +-----------------|
+|                     |                 +**HQ613403|M-M|DRC|2007-08-31
+|                  +--|
+|                  |  +--------------------------------------KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20
+|       +----------|
+|       |          |                     +--KC242800|Ilembe|Gabon|2002-02-23
+|       |          +---------------------|
+|       |                                +--KF113529|Kelle_2|COG|2003-10-15
++-------|
+|       |                  +--KC242792|Gabon|Gabon|1994-12-27
+|       |               +--|
+|       |               |  +--KC242793|1Eko|Gabon|1996-02-15
+|       |      +--------|
+|       |      |        +--KC242798|1Ikot|Gabon|1996-10-27
+|       +------|
+|              +------KU182905|Kikwit-9510621|DRC|1995-05-04
+|
++**KR063671|Yambuku-Mayinga|DRC|1976-10-01
+
+Tree in newick format:
+
+(KC242791|Bonduni|DRC|1977-06-15:0.0001235295,((((HQ613402|034-KS|DRC|2008-12-31:0.0007442813,HQ613403|M-M|DRC|2007-08-31:0.0000010000):0.0162685374,KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20:0.0357366721):0.0007807187,(KC242800|Ilembe|Gabon|2002-02-23:0.0018365483,KF113529|Kelle_2|COG|2003-10-15:0.0028892703):0.0201243832):0.0100594609,(((KC242792|Gabon|Gabon|1994-12-27:0.0013655488,KC242793|1Eko|Gabon|1996-02-15:0.0017381476):0.0008893397,KC242798|1Ikot|Gabon|1996-10-27:0.0034594469):0.0083595868,KU182905|Kikwit-9510621|DRC|1995-05-04:0.0064353028):0.0070771053):0.0073549553,KR063671|Yambuku-Mayinga|DRC|1976-10-01:0.0000010000);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t set11_cds3_ig.treefile -p set11_cds3_ig.best_model.nex
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s tidy.fasta --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s tidy.fasta --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Tue Feb  3 22:59:41 2026
+Total CPU time used: 8.88706 seconds (0h:0m:8s)
+Total wall-clock time used: 10.9396 seconds (0h:0m:10s)
+

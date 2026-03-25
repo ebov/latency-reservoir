@@ -1,0 +1,19 @@
+{
+  "analyses": [
+    {
+      "key": "set19_cds3_ig",
+      "fasta": "./data/raw/fasta/set19.fasta",
+      "partition": "./data/raw/partitions/cds3_ig.nex"
+    },
+    {
+      "key": "set19_cds1",
+      "fasta": "./data/raw/fasta/set19.fasta",
+      "partition": "./data/raw/partitions/cds1.nex"
+    },
+    {
+      "key": "set19_cds2",
+      "fasta": "./data/raw/fasta/set19.fasta",
+      "partition": "./data/raw/partitions/cds2.nex"
+    }
+]
+}

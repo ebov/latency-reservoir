@@ -1,0 +1,20 @@
+rootAge_hpd_min,1856
+rootAge_hpd_max,1948
+rootAge_mean,1911
+rootAge_median,1922
+clockRate_hpd_min,1.20$ \times 10^{-4}$
+clockRate_hpd_max,3.16$ \times 10^{-4}$
+clockRate_mean,2.28$ \times 10^{-4}$
+clockRate_median,2.36$ \times 10^{-4}$
+latentBranches_hpd_min,6
+latentBranches_hpd_max,9
+latentBranches_mean,7
+latentBranches_median,7
+latentStateRate_hpd_min,0.02
+latentStateRate_hpd_max,0.10
+latentStateRate_mean,0.06
+latentStateRate_median,0.06
+latentStateBias_hpd_min,0.475
+latentStateBias_hpd_max,0.952
+latentStateBias_mean,0.72
+latentStateBias_median,0.73

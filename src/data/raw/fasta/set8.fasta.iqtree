@@ -1,0 +1,117 @@
+IQ-TREE 3.0.1 built May  5 2025
+
+Input file name: ../../data/raw/fasta/set8.fasta
+User tree file name: wa.tree
+Type of analysis: tree reconstruction
+Random seed number: 672393
+
+REFERENCES
+----------
+
+To cite IQ-TREE 3 please use:
+
+Thomas K.F. Wong, Nhan Ly-Trong, Huaiyan Ren, Hector Banos, Andrew J. Roger,
+Edward Susko, Chris Bielow, Nicola De Maio, Nick Goldman, Matthew W. Hahn,
+Gavin Huttley, Robert Lanfear, Bui Quang Minh (2025)
+IQ-TREE 3: Phylogenomic Inference Software using Complex Evolutionary Models.
+Submitted.
+
+Please also cite the following paper(s) for the feature(s) that you used:
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 8 sequences with 18965 nucleotide sites
+Number of constant sites: 17934 (= 94.5637% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 17934 (= 94.5637% of all sites)
+Number of parsimony informative sites: 550
+Number of distinct site patterns: 141
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: HKY+F
+
+Rate parameter R:
+
+  A-C: 1.0000
+  A-G: 11.3214
+  A-T: 1.0000
+  C-G: 1.0000
+  C-T: 11.3214
+  G-T: 1.0000
+
+State frequencies: (empirical counts from alignment)
+
+  pi(A) = 0.3189
+  pi(C) = 0.2137
+  pi(G) = 0.1983
+  pi(T) = 0.2691
+
+Rate matrix Q:
+
+  A   -0.8437   0.06609    0.6944   0.08321
+  C   0.09864    -1.102   0.06133    0.9421
+  G     1.117   0.06609    -1.266   0.08321
+  T   0.09864    0.7482   0.06133   -0.9082
+
+Model of rate heterogeneity: Uniform
+
+USER TREE
+---------
+
+Log-likelihood of the tree: -32629.9843 (s.e. 180.1371)
+Unconstrained log-likelihood (without tree): -34102.6506
+Number of free parameters (#branches + #model parameters): 17
+Akaike information criterion (AIC) score: 65293.9685
+Corrected Akaike information criterion (AICc) score: 65294.0008
+Bayesian information criterion (BIC) score: 65427.4245
+
+Total tree length (sum of branch lengths): 0.0569
+Sum of internal branch lengths: 0.0295 (51.8940% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'KC242791|Bonduni|DRC|1977-06' is drawn at root
+
++**KC242791|Bonduni|DRC|1977-06
+|
++**KR063671|Yambuku-Mayinga|DRC|1976-10-01
+|
+|                           +--KC242792|Gabon|Gabon|1994-12-27
+|                        +--|
+|                        |  +--KC242793|1Eko|Gabon|1996-02
+|        +---------------|
+|        |               +---KC242798|1Ikot|Gabon|1996-10-27
++--------|
+         |                              +--KC242800|Ilembe|Gabon|2002-02-23
+         |         +--------------------|
+         |         |                    +--KF113529|Kelle_2|COG|2003-10
+         +---------|
+                   +---------------------------------------KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20
+
+Tree in newick format:
+
+(KC242791|Bonduni|DRC|1977-06:0.0000523037,KR063671|Yambuku-Mayinga|DRC|1976-10-01:0.0000010000,(((KC242792|Gabon|Gabon|1994-12-27:0.0007918381,KC242793|1Eko|Gabon|1996-02:0.0010571945):0.0005859907,KC242798|1Ikot|Gabon|1996-10-27:0.0022694903):0.0080614996,((KC242800|Ilembe|Gabon|2002-02-23:0.0014451965,KF113529|Kelle_2|COG|2003-10:0.0018283527):0.0109224762,KJ660347|Makona-Gueckedou-C07|Guinea|2014-03-20:0.0199160568):0.0053700874):0.0045758719);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t ../../data/raw/fasta/set8.fasta.treefile -m "HKY{11.3214}+F{0.318938,0.213689,0.198315,0.269058}" --length 18965
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s ../../data/raw/fasta/set8.fasta --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s ../../data/raw/fasta/set8.fasta --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Tue Jul 15 17:11:40 2025
+Total CPU time used: 0.013798 seconds (0h:0m:0s)
+Total wall-clock time used: 0.0219409 seconds (0h:0m:0s)
+

@@ -1,0 +1,47 @@
+{
+  "analyses": [
+      {
+    "key": "sc.latency.noKivu",
+    "fasta": "./data/raw/fasta/noKivu.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":5000,
+      "logEvery":10,
+      "template":"./data/processed/xmlTemplates/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":50,
+      "resample":100
+    }
+  },
+  {
+    "key": "sc.latency.noKivu.noMakona",
+    "fasta": "./data/raw/fasta/noKivu.noMakona.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":5000,
+      "logEvery":10,
+      "template":"./data/processed/xmlTemplates/rh.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":50,
+      "resample":100
+    }
+  },
+    {
+    "key": "lc.latency",
+    "fasta": "./data/raw/fasta/set19.fasta",
+    "partition": "./data/raw/partitions/best.nex",
+    "beast":{
+      "n":2,
+      "chainLength":5000,
+      "logEvery":10,
+      "template":"./data/processed/xmlTemplates/rh.lc.template",
+      "metadata":"./data/processed/location.tsv",
+      "burnin":50,
+      "resample":100
+    }
+  }
+],
+"save_every":100
+}
