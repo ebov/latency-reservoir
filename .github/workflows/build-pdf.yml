@@ -1,0 +1,31 @@
+name: Build LaTeX document
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v6
+        
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: draft.tex
+          working_directory: src/doc
+          
+      # https://github.com/matsengrp/tex-template/blob/main/.github/workflows/build-pdf.yml
+      - name: Copy PDF with timestamped name 
+        run: |
+          REPO_NAME=$(basename "$GITHUB_REPOSITORY")
+          TIMESTAMP=$(TZ='America/Los_Angeles' date +"%Y-%m-%d@%H-%M")
+          cp src/doc/draft.pdf "${REPO_NAME}_${TIMESTAMP}.pdf"
+
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v6
+        with:
+          name: PDF
+          path: "*_*.pdf"
