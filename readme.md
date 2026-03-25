@@ -3,7 +3,7 @@
 This repo holds the scripts needed to reproduce the results presented in [McCrone et al.](https://www.biorxiv.org/content/10.1101/2025.10.17.683141v1).
 
 BEAST log files are not tracked in this repo. They have been deposited in Zenodo [10.5281/zenodo.19224985 ](https://doi.org/10.5281/zenodo.19224985)along with an archive of this repo.
-Some scripts expect these files to be stores in `./src/results/remote`
+Some scripts expect these files to be stored in `./src/results/remote`
 
 To install the javascript dependencies of this project run 
 ```
