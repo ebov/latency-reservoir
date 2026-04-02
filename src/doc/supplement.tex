@@ -2,159 +2,6 @@
 
 \section* {Supplemental information}
 
-
-
-\section*{Materials and Methods}
-
-\subsection*{Data}
-
-To explore EBOV evolutionary rate variation in non-human hosts, we assembled a data set of genomes that span the known history of the virus.
-Most available EBOV genomes have been sampled from human cases.
-We have included one genome per outbreak, preferring those with precise dates of sampling.
-A list of sequences used is provided in Supplementary Table~\ref{tab:genomes}, including, where applicable, their GenBank and Pathoplexus accession numbers.
-A SeqSet of all genomes use in this study can be found on Pathoplexus \cite{PP_SS_1057_2}.
-
-\subsection*{Phylogenetic inference}
-Sequences were aligned using MAFFT (v7.526) \cite{Katoh2013-ll} and refined by hand. 
-Five prime and three prime untranslated regions were ignored in all phylogenetic analyses.
-
-In each analysis, we used a separate HKY substitution model \cite{Hasegawa1985-ei} for each of three partitions of the data: coding position one, coding position two, and a concatenation of coding position three and the intergenic regions.
-This was deemed to be the best partition scheme by IQ-TREE v2's partition finder when compared to a partitioning scheme with separate partitions for each of the tree codon positions and intergenic regions.
-Maximum-likelihood phylogenetic trees were estimated using IQ-TREE v3.0.1\cite{Minh2020-uy}. 
-The likelihood ratio tests in the TipDate analysis \cite{Rambaut2000-ss} were performed using PAML (commit:ac9b97c8c35) \cite{Yang2007-gc,Yang1997-pd}.
-
-For the root-to-tip correlations in Figure~\ref{fig:rtt}, which exclude several clades, we first rooted the tree on the specified branch and then determined the location of the root on that branch based on most likely location from the TipDate analysis above.
-These calculations gave very similar results to those obtained from TempEst when run on trees containing just the tips included in the regressions (highlighted branches in Figure~\ref{fig:rtt}A and \ref{fig:rtt}B) \cite{Rambaut2016-gr}.
-
-Clade-level, maximum-likelihood evolutionary rate estimates were calculated using the strict-clock model proposed by Didelot \textit{et al.} \cite{Didelot2018-st}.
-Each clade was identified in and pruned out of the full maximum-likelihood phylogenetic tree estimated by IQ-TREE so that even clades with only 2 tips were rooted.
-We then estimated the maximum-likelihood evolutionary rate and time-scaled the branch lengths using a gamma distribution with mean equal to the variance as described in \cite{Didelot2018-st}. 
-Optimization was achieved using the optimization library fmin (\url{https://www.npmjs.com/package/fmin}).
-
-All Bayesian phylogenetic analyses were performed in BEAST X \cite{BEASTX} using the BEAGLE high-performance computational library \cite{ayres2019beagle} to improve computational performance. 
-For each analysis two chains were run for 500 million states and sampled every 100\,000 states with the first 25\,000 states removed as burn-in.
-We employed a constant population coalescent tree prior with a log-normal prior (logarithm of location $\mu$ = 4, logarithm of scale $\sigma$ = 1) (95\% interval [8, 388]) on the population size.
-Preliminary analyses with an exponentially growing population did not exhibit a growth rate different from zero.
-Phylogeographic analyses employed a time-homogeneous Brownian diffusive model of geographic spread \cite{Lemey2010-ru}. 
-
-We placed a conditional reference prior on the underlying evolutionary rate \cite{Ferreira2008}, with a slight modification.
-Typically, this prior is approximated as a gamma distribution with shape 0.5 and rate equal to the length of the tree, which results in an expectation of 0.5 mutations at each site over the entire tree.
-Because our tree contains periods during which no mutations accumulate, we updated the prior so that the rate was equal to the length of the replicating part of the tree which arrives at the same expectation.
-
-We used a similar reference prior on the latent transition rate (see below for details).
-However, because latency is a branch-specific event that `resets' at each node and because we expect there to be some small amount of latency over the duration of the tree, we use the root height as the rate parameter of the prior as opposed to the length of the tree.
-Sensitivity analyses with half the root height and twice the root height yielded similar results. 
-
-We place a uniform prior on the relative rate bias between entering and leaving the latent state.
-Sampling from these prior distributions and the samples dates of the full 19-taxa dataset results in a mean of 0.06 branches enjoying at least one period of latency with a 95\% prior probability of no branches exhibiting latency.
-We assessed convergence to the posterior distribution and proper mixing of all relevant parameters in Tracer 1.7 \cite{Tracer}.
-
-All BEAST X XML files used in this analysis can be found at \url{https://github.com/ebov/latency-reservoir}.
-
-\subsection*{Latent-state branch rate model}
-
-We model the evolutionary rate of EBOV according to a state-dependent rate model \cite{Lewinsohn2022-pf} where branches alternate between two possible states, replicating and latent, according to a continuous-time Markov chain (CTMC).
-Each branch transitions independently between states according to an infinitesimal rate matrix $Q$ conditioned on starting and ending in the replicating state.
-This condition is necessitated by the fact that each node represents either a sampled active infection (external nodes) or an unsampled branching event (internal nodes).
-While in the replicating state, each branch undergoes evolution according to some underlying molecular clock model (e.g. strict clock, uncorrelated relaxed clock, etc.); the evolutionary rate is set to $0.0$ when in the latent state.
-The overall evolutionary rate along a branch is then determined by its underlying rate ($\mu$) and the amount of time spent in the replicating ($t_{r}$) and latent ($t_l$) states, where $t=t_l+t_r$ is the total length of the branch in time.
-
-Several approaches exist for estimating the amount of time a branch spends in each state.
-Cappello \textit{et al.} explicitly sample the state history of each lineage as it transitions between replicating and non-replicating states in a seedbank model \cite{Cappello2025-dl}.
-While accurate, explicitly sampling complete transition histories is computationally expensive.
-Similarly, Lewinsohn \textit{et al.} have developed an alternative state-dependent evolutionary rate model that marginalizes over the state history and approximates the evolutionary rate of each branch by using the expected time spent in each state \cite{Lewinsohn2022-pf}.
-Such an approximation seems appropriate in cases where both states replicate at different rates.
-However, in our setting -- where branches may not experience any latency -- the mean time spent latent is a poor representation of the possible dynamics.
-
-We avoid sampling transition histories and instead estimate the proportion of time each branch spends in latency, integrated over all possible histories.
-Our approach is akin to recent approximations to the structured coalescent which also marginalize over histories \cite{Muller2018-bs,Muller2017-jk,De-Maio2015-eo,Shao2025}.
-However, the model used here is simplified in that each branch's state history is independent of all others, which allows for an exact solution.
-
-We are interested in estimating the phylogenetic posterior distribution described by
-\begin{equation}
-p(G,\Theta,\Omega,\kappa|D) \propto P(D|G,\Phi,\kappa)f(\Phi|\Omega)f_T(G|\Theta)\pi(\Omega,\Theta,\kappa),
-\end{equation}
-where $G$ is our phylogenetic tree with branch lengths in years, $\Theta$ represents the parameters governing the coalescent tree prior, $\Omega$ the parameters of the evolutionary model, and $\kappa$ the substitution parameters. 
-Moreover, $P(D|G,\Phi,\kappa)$ is the observed sequence likelihood of an alignment $D$ given the phylogenetic tree $G$, the collection of evolutionary rates (one for each branch) $\Phi$, and the parameters governing the substitution model $\kappa$. 
-Here, $f_T(G|\Theta)$ is the tree prior with hyperparameters $\Theta$, $f(\Phi|\Omega)$ the probability density of each branch's evolutionary rate according to the latent model described below, and $\pi(\Omega,\Theta,\kappa)$ represents the prior over the remaining parameters.
-
-In our model, $\Omega$ parametrizes the rate matrix underlying our latent-state CTMC and is comprised of two parameters, $r$ and $b$, in addition to any parameters needed by the base evolutionary rate model -- $\mu$ in the case of a strict clock. 
-The rate matrix is defined as 
-\begin{equation}
-Q = \begin{bmatrix}
-     -rb   & rb \\
-     r(1-b) & -r(1-b)
-    \end{bmatrix}
-\end{equation}
-with the first state representing replication and the second latency. 
-
-Given that all nodes exist in the replicating state, the process on each branch is then independent of the others and so we write
-\begin{equation}
-f(\Phi|\Omega) = \prod_{i=1}^{2(n-1)}f(\phi_i|\Omega),
-\end{equation}
-where $n$ is the number of tips in our tree, $2(n-1)$ is the number of branches and each branch has its own rate $\phi_i$.
-We define each $\phi_i = \mu (1-p^{i}_{l})$ as the product of a base evolutionary rate $\mu$ and the proportion of the branch length spent in latency $p^{i}_{l}$.
-Here, we use a strict-clock model to assign the same base evolutionary rate to each branch, but more complicated models could be used.
-Thus, dropping the indexing for convenience, we write
-\begin{equation}
-f(\phi|\Omega,t) =  f( p_{l}| \Omega,t ),
-\end{equation}
-where $t$ is the length of the branch in time. 
-We derive $f(p_{l}|\Omega,t)$ below.
-
-We note that $p_l = t_l/t$ and so 
-
-\begin{equation}
-f(p_l|\Omega,t)  = \begin{cases}
-    f(t_l|\Omega,t) \cdot t & 0<p_l\leq1, \\
-    f(t_l|\Omega,t) & p_l=0.
-    \end{cases}
-\end{equation}
-
-Let $X(s)$ describe the state of a branch (i.e. replicating or latent) at time $s$ ($0\leq s\leq t$), and $t_{l}$ describe the occupation time spent in the latent state.
-Sericola and colleagues \cite{Sericola2000-ph,Bladt2002-hg} provide numerically stable algorithms for the joint probability
-
-\begin{equation}
-\operatorname{Pr}(t_l\leq s,X(t)=\text{rep}|X(0)=\text{rep},t,\Omega), \text{ }s \in[0,t],
-\end{equation}
-
-and also
-\begin{equation}
-\operatorname{Pr}(t_l=s,X(t)=\text{rep}|X(0)=\text{rep},t,\Omega), \text{ }s  \in(0,t],
-\end{equation}
-which are conditioned on the starting state being in the replicating state ($X(0)=\text{rep}$).
-These algorithms approximate an infinite sum to within a pre-defined error tolerance. 
-Here we set the tolerance to $1\times 10^{-10}$.
-
-Here, we are interested in conditioning on both the starting ($X(0)$) and ending ($X(t)$) state and have
-\begin{equation}
-    F(s \mid t,\Omega) := \operatorname{Pr}(t_l\leq s|X(t)=\text{rep},X(0)=\text{rep},t,\Omega) =  \frac{\operatorname{Pr}(t_l\leq s,X(t)=\text{rep}|X(0)=\text{rep},t,\Omega)}{\operatorname{Pr}(X(t)=\text{rep}|X(0)=\text{rep})}
-\end{equation}
-as the conditional cumulative distribution function (CDF) and 
-\begin{equation}
-   f(s \mid t,\Omega) := f(t_l= s|X(t)=\text{rep},X(0)=\text{rep},t,\Omega) =  \frac{\operatorname{Pr}(t_l =  s,X(t)=\text{rep}|X(0)=\text{rep},t,\Omega)}{\operatorname{Pr}(X(t)=\text{rep}|X(0)=\text{rep})},
-\end{equation}
-as the conditional density, which we will write with a $t$ subscript below ( $F_t(t_l|\Omega,t)$ and $f_t(t_l|\Omega,t)$ ) to denote they are functions of the total branch length $t$. 
-The probability of never entering the latent state $t_l = 0$ is given by $F(0|\Omega,t)$.
-The probability distribution function of the proportion of time spent latent $f(p_{l}|\Omega,t)$ is then defined as
-
-\begin{equation}
-    f(p_{l}|\Omega,t) = \begin{cases}
-        t\cdot f_t(p_l\cdot t|\Omega,t) & 0<p_l\leq1, \\
-        F_t(0|\Omega,t) & p_l =0.
-    \end{cases} 
-\end{equation}
-
-
-In our analyses we place a uniform $(0,1)$ prior on $b$ and a modified conditional reference prior with rate equal to the height of the root on on $r$.
-
-
-\subsection*{Code availability}
-The latent-state model used above has been implemented in BEAST X (commit:edf73f) \cite{BEASTX}. 
-All code needed to reproduce the analyses reported here has been deposited XXXX and can be found at \url{https://github.com/ebov/latency-reservoir}.
-
-
-
 \beginsupplement
 
 
@@ -163,123 +10,79 @@ All code needed to reproduce the analyses reported here has been deposited XXXX 
 
 \begin{figure*}[!hbtp]
     \centering
-    \includegraphics[scale=1.25]{figures/mapFigure.png}
-    \caption{A map (A) and unrooted tree (B) representing the outbreaks included in this study. Common and proposed root placements are noted on the tree. The large grey sphere represents plausible root positions proposed by the latency rate model. }
+    \includegraphics[width=1\textwidth]{figures/mapFigure.png}
+    \caption{\textbf{A map (A) and unrooted tree (B) representing the outbreaks included in this study.} Common and proposed root placements are noted on the tree. The large grey sphere represents plausible root positions proposed by the latency rate model.}
     \label{fig:map}
 \end{figure*}
 
 \begin{figure*}[!hbtp]
     \centering
-        \includegraphics[scale=0.98]{figures/allRoots.noMakona.png}
+        \includegraphics[width=1\textwidth]{figures/allRoots.noMakona.png}
    \caption{
-      Posterior distributions partitioned by root position for all roots with greater than 5\% posterior support in the Central African data set (i.e. no Makona/2013). 
-    Clades are coloured by geographic cluster with tips labeled by outbreak.
-    The marginal posterior root age distribution is shown in grey with each root's conditional contribution highlighted in blue.
-    For branches with greater than 50\% posterior support for latency, the posterior probability of latency is labeled above the branch. The mean duration of latency (conditioned on there being at least one period of latency) is shown as a dashed line centered between the parent and child node. 
-   Insets: The posterior distribution of the evolutionary rate during replication, again shaded by total analysis (grey) and conditioning on specific roots (blue).
-    In all posterior distribution plots the shaded area represents the 95\% HPD.
+     \textbf{The evolutionary history of EBOV in Central Africa under the latent model (all explored roots).} 
+	Same as Figure~\ref{fig:scNmBEAST} but for all rootings with greater than 5\% posterior support.
    } 
     \label{fig:nMallRoots}
 \end{figure*}
 
 \begin{figure*}[!hbtp]
     \centering
-        \includegraphics[scale=1.0]{figures/allRoots.png}
-   \caption{
-      Posterior distributions partitioned by root position for all roots with greater than 5\% posterior support in the full data set. 
-    Clades are coloured as previously with tips labeled by outbreak. 
-    The marginal posterior root age distribution is shown in grey with each root's conditional contribution is highlighted in blue.
-    For branches with greater than 50\% posterior support for latency, the posterior probability of latency is labeled above the branch. The mean duration of latency (conditioned on there being at least one period of latency) is shown as a dashed line centered between the parent and child node. 
-   Insets: The posterior distribution of the evolutionary rate during replication, again shaded by total analysis (grey) and conditioning on specific roots (blue).
-    In all posterior distribution plots the shaded area represents the 95\% HPD.
+        \includegraphics[width=1\textwidth]{figures/allRoots.png}
+    \caption{\textbf{The evolutionary history of all EBOV outbreaks under the latent model partitioned by root position (all explored roots).} 
+	Same as Figure~\ref{fig:scBEAST} but for all rootings with greater than 5\% posterior support.
    } 
     \label{fig:allRoots}
 \end{figure*}
 
 \begin{figure*}[!hbtp]
     \centering
-    \includegraphics[scale=1.0]{figures/phyloGeo-full.png}
-    \caption{The geographic implication of EBOV latency with the entire dataset. 
-    (A) The MCC tree of the dataset of the full 19-taxa data set. 
-    Branches with more than 50\% posterior probability of at least one latent period are dashed, and those present in the map in B are colored according to the clade they subtend.
-    Tips are labeled by outbreak and colored as previously.
-    The root is denoted with a black circle surrounded by a dashed box, while ancestral nodes shown in B are highlighted with dark squares.
-    (B) A map depicting the geographic spread of EBOV under the latent-state model. 
-    Note the West African outbreak is not shown. 
-    The average root position is represented by a black circle.
-    The 50\% HPD of the root position is enclosed by a dashed contour, while the 50\% HPD locations of the ancestral nodes (squares in A) is represented by the solid contour.
-    The arrows represent the mean source and destination of the similarly colored branches in A. 
-    Outbreaks are shown as colored circles, and the 50\% HPD of the MRCA of each outbreak clade is denoted as a shaded contour.
+    \includegraphics[width=1\textwidth]{figures/phyloGeo-full.png}
+ \caption{\textbf{The geographic implication of latency in the EBOV reservoir including Makona/2013.} 
+	Same as Figure~\ref{fig:scPhylogeo} but the Makona/2013 sample has been included in the analysis. 
    }
     \label{fig:scPhylogeoFull}
 \end{figure*}
 
 \begin{table}
     \centering
+    \caption{\textbf{Recorded EBOV outbreaks used in this study.} Outbreak - the name of the outbreak; Country - the country of the outbreak; Adm1 - Administrative Region 1 of the outbreak. Duration - the dates of the outbreak. * indicates two genomes from the Equateur/2020 outbreak are present in our data.}
     \input{tables/outbreaks.tex}
-    \caption{Recorded EBOV outbreaks used in this study. adm1 - Administrative Region 1 of the outbreak. * indicates two genomes from the Equateur/2020 outbreak are present in our data.}
     \label{tab:oubtbreaks}
 \end{table}
 
-
-\begin{landscape}
+\begin{table}
+\centering
+\caption{\textbf{A list of the genomes used in this study with outbreak.} Accession refers to Pathoplexus accession and can be found at \cite{PP_SS_1057_2}. INSDC references the INSDC accesion for each sequence. Dataset denotes the smallest dataset in Table~\ref{tab:tipdater} which includes the taxa. Datasets build upon each other (e.g. the 11 taxa dataset adds 3 taxa to the 8 taxa dataset.)}
 \input{tables/genomes.tex}
-\end{landscape}
+\label{tab:genomes}
+\end{table}
+
+
+\pagebreak
 
 \section*{Supplemental text}
 
-
-\subsubsection*{The plausibility of future latent-derived outbreaks}
-
-Our results suggest a significant number of EBOV outbreaks have derived from once latent lineages, and that latency may be an evolutionary mechanism by which EBOV persists in the reservoir.
-To determine the contribution of latency to future EBOV outbreaks, we plotted the cumulative distribution of there being at least one latent period as a function of branch length using the parameters estimated by our model (Figure~\ref{fig:future}A).
-We excluded the West African outbreak in these parameter estimates and relied on the analysis presented in Figure~\ref{fig:scNmBEAST} on the basis that the West African outbreak seems to have originated from a separate process than that acting in Central Africa.
-Our results suggest a branch length of \expectations{median} years has a 50\% chance of exhibiting latency, and the expected proportion of time spent latent for such a branch is \expectations{expP} or roughly \expectations{expT} years. 
-As highlighted in Figure~\ref{fig:future}B, we have little precision in our prediction of the sum duration of latency, provided there is latency on a branch.
-
-Our model above finds latency on the branch subtending the recent EBOV outbreak in Kasai, DRC \cite{Wawina-Bokalanga2025-gu}.
-This is consistent with the limited number of mutations (96) that have accumulated over the 49 years that have passed between this outbreak its closest relative --- the 1976 Yambuku outbreak.
-We wondered if our model estimates could have been used to predict the contribution of latency to this outbreak prior to genome sequencing. 
-Fitting the latent model to the Central African dataset without the Kasaï/2025 outbreak predicts the Kasaï outbreak has an expected probability of \expectationsNoKasai{kasai}\% of at least one latent period.
-Conditional on there being latency, the model provides a wide range of possible durations.
-The expected time spent latent is \expectationsNoKasai{kasaiExpT} years (95\% quantiles [\expectationsNoKasai{kasaiExpT_min}, \expectationsNoKasai{kasaiExpT_max}]), which corresponds to an evolutionary rate of \expectations{kasaiExpRate} s/s/y  (95\% quantiles: [\expectationsNoKasai{kasaiExpRate_min}, \expectationsNoKasai{kasaiExpRate_max}]) or roughly \expectationsNoKasai{kasaiExpMuts} mutations (95\% quantiles: [\expectationsNoKasai{kasaiExpMuts_min}, \expectationsNoKasai{kasaiExpMuts_max}]).
-The observed 96 mutations fall within this range; however we expect a more detailed model that accounts for the fragmented nature of the EBOV reservoir may better predict which clades are likely replicating, and which may be expected to persist only through latency.
-
-\begin{figure*}[!hbtp]
-    \centering
-    \includegraphics[width=1\textwidth]{figures/futureFigure.withKasai.png}
-    \caption{The expected contribution of latency to future outbreaks based on model estimates.
-    A) The probability of some latency as a function of branch length. 
-    B) The distribution of the proportion of time spent in latency provided there is some latency on branches of different length (noted text near each line). }
-    \label{fig:future}
-\end{figure*}
 
 
 \subsubsection*{Further exploration of temporal signal}
 
 The temporal outliers observed in the EBOV phylogeny could have resulted from enhanced purifying selection instead of latency.
-To ensure this was not the case, we repeated the analysis in Figure~\ref{fig:rtt} with a partition made of only third position codon sites and intergenic regions (Figure~\ref{fig:rtt-cds3_ig}).
+To investigate this possibility, we repeated the analysis in Figure~\ref{fig:rtt} with a partition made of only third position codon sites and intergenic regions (Figure~\ref{fig:rtt-cds3_ig}).
 Despite elevated evolutionary rates, which are expected for a dataset enriched in synonymous sites, this analysis produced the same conclusions as that run on the full genome.
-Temporal outliers were maintained, as were our initial observations regarding within- and between- cluster rates. 
+Temporal outliers were maintained, as were our initial observations regarding within- and between-cluster rates. 
 
 \begin{figure*}[!hbtp]
     \centering
-    \includegraphics[width=1\textwidth]{figures/rtt-cds3_ig.png} 
-    \caption{Root-to-tip exploration of rate heterogeneity in the EBOV phylogeny focusing on third position codon sites and intergenic regions. 
-    A \& C) The EBOV phylogeny rooted at the accepted 1970s outbreak position and corresponding root-to-tip divergence plot. 
-    B \& D) Similar to A and C but with the proposed rooting. 
-    In all figures tips are coloured by outbreak cluster (Supplemental Figure~\ref{fig:map}A) and labelled by outbreak name (Supplemental Table~\ref{tab:genomes}).
-    Branches in A and B that are highlighted in grey connect tips used in the full regressions in C and D. 
-    Dashed, coloured regression lines are calculated for each cluster independently.
-    E) The maximum-likelihood evolutionary rate estimated for each cluster independently. Bars represent the 95\% confidence interval (CI).
-    The black vertical line represents the evolutionary rate estimated when all clusters share the same rate, with a grey box representing the 95\% CI.}
-    \label{fig:rtt-cds3_ig}
+    \includegraphics[width=0.8\textwidth]{figures/rtt-cds3_ig.png} 
+     \caption{\textbf{Rate heterogeneity in the EBOV phylogeny (third position coding sites and intergenic regions).}
+	Same as Figure~\ref{fig:rtt} with the exception that the presented phylogenies were made with only sites in the third codon position and intergenic regions.
+	}    \label{fig:rtt-cds3_ig}
 \end{figure*}
 
 
 \subsection*{Prior sensitivity analysis}
 
-Preliminary analyses suggested that when applied to the EBOV dataset the latency model is positioned between two extremes, both of which likely have issues with identifiability.
+Preliminary analyses suggested that when applied to the EBOV dataset the latency model is positioned between two extremes, both of which likely have identifiability issues.
 If the rate of latent-replicating transition is too low relative to the scale of the tree, no latency is expected and the model reduces to a strict-clock model.
 In this case, there is no temporal signal in the full dataset if a strick-clock model is employed.
 The evolutionary rate is unidentifiable.
@@ -287,59 +90,40 @@ The evolutionary rate is unidentifiable.
 If the rate of transition is too high then the model approaches a free-rates model with an evolutionary rate on each branch. 
 In some datasets where the parameters of the latency model may be known this could be tolerated.
 However, our analyses show that we have little power to predict \emph{a priori} the amount of latency on a latent branch.
-Note the wide spread in the distribution of time spent latent in the Supplemental Figure~\ref{fig:future}B. 
-
-\begin{table}
-    \centering
-    \input{tables/prior.tex}
-    \caption{Prior sensitivity analysis. Prior - the rate parameter of the gamma distribution placed on the latent rate relative to the height of the tree. Root age- posterior mean and 95\% HPD of the root age. Clock rate- posterior mean and 95\% HPD of the evolutionary rate when replicating. Latent branches -  the median and 95\% HPD of the number of branches with at least one latent period.}
-    \label{tab:prior}
-\end{table}
-
+Note the wide spread in the distribution of time spent latent in Figure~\ref{fig:future}B. 
 
 In this study we place a gamma prior on the rate of latent-replicating transitions.
 The gamma distribution was parameterized with a rate parameter equal to the root height.
 This prior was chosen to ensure the expected rate of latency scales with the phylogeny and strikes a balance between the extremes above without prohibiting either.
 As noted in the methods, this prior favors no latency while still allowing for the possibility of latency (95\% prior probability of no latency).
 
+We ran two additional analyses to explore the impact of this prior on our findings.
+In the first, the rate of the gamma distribution was set to one half the root height, which would favor more latency (Figure~\ref{fig:nM-rh05}).
+In the other, the rate of the gamma distribution was set to twice the root height, which favors less latency (Figure~\ref{fig:nM-rh2}).
+Both analyses produced comparable results to that presented in the main text (Table \ref{tab:prior} and Figures~\ref{fig:nM-rh2} \& \ref{fig:nM-rh05}).
+In fact, increasing the rate of the gamma prior by a factor of two increased the posterior support for the proposed root to nearly 90\% (Figures~\ref{fig:nM-rh2}).
+
+\begin{table}[!hbp]
+    \centering
+    \input{tables/prior.tex}
+  \caption{\textbf{Prior sensitivity analysis.} Prior - the rate parameter of the gamma distribution placed on the latent rate. Root age- posterior mean and 95\% HPD of the root age. Clock rate- posterior mean and 95\% HPD of the evolutionary rate when replicating. Latent branches -  the median and 95\% HPD of the number of branches with at least one latent period.}
+    \label{tab:prior}
+\end{table}
+
 \begin{figure*}[!hbtp]
     \centering
     \includegraphics[width=1\textwidth]{figures/allRoots.noMakona-rh0.5.png}
-    \caption{Evolutionary history of EBOV in Central Africa with a prior that favors more latency in the tree.
-    A) A maximum clade credibility (MCC) of tree of 18 EBOV outbreaks in Central Africa. 
-    The tree summarises all trees with the displayed rooting.
-    The posterior support for this rooting is displayed next to the root.
-    Clades are coloured as in Figure~\ref{fig:rtt} with tips labelled by outbreak. The root age distribution of the entire analysis is shown in grey with the contribution of the displayed root highlighted in blue.
-    For branches with greater than 50\% posterior support for latency, the posterior probability of latency is labelled above the branch. The mean duration of latency (conditioned on there being at least one period of latency) is shown as a dashed line centered between the parent and child node. 
-    The marginal posterior root age distribution is shown in grey with contribution of the displayed root highlighted in blue.
-    Inset: The posterior distribution of the evolutionary rate during replication, shaded by total analysis (grey) and conditioning on the displayed root (blue).
-    In all posterior distribution plots, the shaded area represents the 95\% HPD.
-    B) The number of lineages that exhibit latency through time. The median number of lineages that show any latency across the entire posterior is plotted as a solid line, with the 95\%HPD shown as a shaded area. 
+  \caption{\textbf{Evolutionary history of EBOV in Central Africa with a prior favoring more latency.}
+	Same as Figure~\ref{fig:nMallRoots}; however the rate parameter of gamma prior placed on the rate of latent transitions is one-half the root height.
     }
     \label{fig:nM-rh05}
 \end{figure*}
 
-To ensure our results are robust to our choice of prior, we ran two additional analyses. 
-In the first, the rate of the gamma distribution was set to one half the root height, which would favor more latency (Supplemental Figure~\ref{fig:nM-rh05}).
-In the other, the rate of the gamma distribution was set to twice the root height, which favors less latency (Supplemental Figure~\ref{fig:nM-rh2}).
-Both analyses produced comparable results to that presented in the main text (Table \ref{tab:prior} and Supplemental Figures~\ref{fig:nM-rh2} \& \ref{fig:nM-rh05}).
-In fact, increasing the rate of the gamma prior by a factor of two increased the posterior support for the proposed root to nearly 90\% (Supplemental Figures~\ref{fig:nM-rh2}).
-
-
-
 \begin{figure*}[!hbtp]
     \centering
     \includegraphics[width=1\textwidth]{figures/allRoots.noMakona-rh2.png}
-    \caption{Evolutionary history of EBOV in Central Africa with a prior that favors less latency in the tree.
-    A) A maximum clade credibility (MCC) of tree of 18 EBOV outbreaks in Central Africa. 
-    The tree summarises all trees with the displayed rooting.
-    The posterior support for this rooting is displayed next to the root.
-    Clades are coloured as in Figure~\ref{fig:rtt} with tips labelled by outbreak. The root age distribution of the entire analysis is shown in grey with the contribution of the displayed root highlighted in blue.
-    For branches with greater than 50\% posterior support for latency, the posterior probability of latency is labelled above the branch. The mean duration of latency (conditioned on there being at least one period of latency) is shown as a dashed line centered between the parent and child node. 
-    The marginal posterior root age distribution is shown in grey with contribution of the displayed root highlighted in blue.
-    Inset: The posterior distribution of the evolutionary rate during replication, shaded by total analysis (grey) and conditioning on the displayed root (blue).
-    In all posterior distribution plots, the shaded area represents the 95\% HPD.
-    B) The number of lineages that exhibit latency through time. The median number of lineages that show any latency across the entire posterior is plotted as a solid line, with the 95\%HPD shown as a shaded area. 
+    \caption{\textbf{Evolutionary history of EBOV in Central Africa with a prior favoring less latency.}
+	Same as Figure~\ref{fig:nMallRoots}; however the rate parameter of gamma prior place the rate of latent transitions is twice the root height.
     }
     \label{fig:nM-rh2}
 \end{figure*}
