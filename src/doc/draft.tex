@@ -65,7 +65,7 @@ style=science,
 \title{Evidence of latency reshapes our understanding of Ebola virus reservoir dynamics}
 %  TODO fix affiliation order once list is finalized
  \author{
-     John T.~McCrone$^{1}$
+     John T.~McCrone$^{1\ast\dagger}$
      \and
      Guy Baele$^2$
      \and
@@ -85,7 +85,7 @@ style=science,
      \and
      Marc A.~Suchard$^{11,12,13}$
      \and
-     Andrew Rambaut$^3$
+     Andrew Rambaut$^{3\ast}$
 }
 \date{%
 \footnotesize
@@ -103,7 +103,9 @@ California, United States\\
     $^{11}$Department of Biostatistics, Fielding School of Public Health, University of California, Los Angeles, CA, USA\\
     $^{12}$Department of Biomathematics, David Geffen School of Medicine, University of California, Los Angeles, CA, USA\\
     $^{13}$Department of Human Genetics, David Geffen School of Medicine, University of California, Los Angeles, CA, USA\\
-    \today
+    \ast Corresponding authors: jmccrone@fredhutch.org ; a.rambaut@ed.ac.uk\\
+    \dagger Lead author
+    % \today
 }
 
 \begin{document}
@@ -115,7 +117,7 @@ While recent outbreaks have revealed much about the epidemiological dynamics tha
 Observations of extreme EBOV evolutionary rate heterogeneity in humans suggest latency is an important, yet untested, factor in persistence between epidemics. 
 We here explicitly model latency with a novel phylogenetic approach to characterise the natural history of EBOV and, by extension, its reservoir.
 We find evidence that EBOV undergoes extended periods (i.e., possibly decades) of quiescence in the reservoir. 
-Accounting for these dynamics significantly changes our understanding of EBOV’s evolutionary past and its geographic spread through Central Africa.
+Accounting for these dynamics significantly changes our understanding of EBOV's evolutionary past and its geographic spread through Central Africa.
 
  % -------------------------------------------------------------------------------------------
 \section*{Introduction} 
@@ -551,6 +553,16 @@ The latent-state model used above has been implemented in BEAST X (commit:edf73f
 All code needed to reproduce the analyses reported here has been deposited in Zenodo (\url{https://doi.org/10.5281/zenodo.19225291}) and can be found at \url{https://github.com/ebov/latency-reservoir}.
 
 
+\section*{Author contributions}
+Conceptualization - J.T.M, G.B, M.A.S, A.R.;
+Data curation - J.T.M., E.K.L, J.A.B, G.D, P.M.K, A.R.;
+Data generation - E.K.L, P.M.K;
+Investigation - J.T.M., G.B, I.F.O, J.A.B, L.M.C, N.F.M, G.D;
+Software - J.T.M, M.A.S., A.R;
+Methodology - G.B, M.A.S, A.R;
+Visualization - J.T.M;
+Writing : original draft - J.T.M., G.B., I.F.O, L.M.C, A.R.;
+Writing : editing - all authors.
 
 
 \section*{Competing interests}
